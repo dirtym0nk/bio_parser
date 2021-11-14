@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 
 driver = webdriver.Chrome(executable_path='driver/chromedriver')
-
+f = open('bioinf.txt', 'w')
 driver.get('https://fipi.ru/ege/otkrytyy-bank-zadaniy-ege#!/tab/173765699-6')
 time.sleep(3)
 driver.execute_script("window.scrollTo(0, 200)")
@@ -30,15 +30,15 @@ for i in range(2, 92):
             return list_words
 
     for asq in range(len(questions)):
-        print(questions[asq])
+        f.write(questions[asq] + "\n")
         for word in ansewers_return(asq):
             if word in ["1)", "2)", "3)", "4)", "5)", "6)"]:
-                print(word.replace(" ", ""), end="")
+                f.write(word.replace(" ", "") + "\n")
             else:
-                print(word.strip())
-        # for word in words:
-        #     if word.text.strip() in ["1)", "2)", "3)", "4)", "5)", "6)"] or word.text.replace(" ", "") != "":
-        #         print(word.text.strip())
+                f.write(word.strip() + "\n")
+        f.write(" " + "\n")
+
+
 
 
     questions.clear()
