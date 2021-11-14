@@ -32,10 +32,10 @@ for i in range(2, 92):
     for asq in range(len(questions)):
         f.write(questions[asq] + "\n")
         for word in ansewers_return(asq):
-            if word in ["1)", "2)", "3)", "4)", "5)", "6)"]:
-                f.write(word.replace(" ", "") + "\n")
-            else:
-                f.write(word.strip() + "\n")
+            count = 1
+            if word.strip() != '' and word.strip() not in ["1)", "2)", "3)", "4)", "5)", "6)"]:
+                f.write(str(count) + ")" + word.strip() + "\n")
+            count += 1
         f.write(" " + "\n")
 
 
